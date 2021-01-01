@@ -24,13 +24,13 @@ python manage.py migrate
 
 ## Running
 
-- Create `local_settings.py` file in ./imagerepo
+- Create `local_settings.py` file in `/imagerepo/imagerepo`
 - Enter the code below into the `local_settings.py`
 
 ```python
 SECRET_KEY = "your  app screts key"
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'google auth02 key '
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'google auth02 secret key '
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'google auth02 key'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'google auth02 secret key'
 DEBUG = True
 ALLOWED_HOSTS = ["localhost"]
 ```

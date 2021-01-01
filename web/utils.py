@@ -5,13 +5,11 @@ from django.conf import settings
 
 def get_image_tags(image_url):
     print("URL: "+image_url)
-    api_key = 'acc_cece79b1fdbe524'
-    api_secret = '85636c4461a3a21d423280c7feb49061'
     if settings.DEBUG:
-        image_url = 'https://docs.imagga.com/static/images/docs/sample/japan-605234_1280.jpg'
+        image_url = 'https://imagerepo.pythonanywhere.com/assets/uploads/images/101_m3qcQH3.jpg'
     return requests.get(
         'https://api.imagga.com/v2/tags?image_url=%s' % image_url,
-        auth=(api_key, api_secret))
+        auth=(settings.api_key, settings.api_secret))
 
 
 if __name__ == "__main__":

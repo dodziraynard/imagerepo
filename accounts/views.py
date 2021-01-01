@@ -77,8 +77,8 @@ class UploadImage(View):
                                         string_tags += f'{tag.get("tag").get("en")} '
                                 image.auto_tags = string_tags
                                 image.save()
-                    except Exception:
-                        pass
+                    except Exception as e:
+                        print("Error getting tag: ", e)
 
             else:
                 for field, er in form.errors.items():

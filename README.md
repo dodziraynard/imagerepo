@@ -28,23 +28,26 @@ python manage.py migrate
 - Enter the code below into the `local_settings.py`
 
 ```python
-SECRET_KEY = "your  app screts key"
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'google auth02 key'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'google auth02 secret key'
+SECRET_KEY = "your_app_screts_key"
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'google_auth02_key'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'google_auth02_secret_key'
 DEBUG = True
 ALLOWED_HOSTS = ["localhost"]
 ```
 
-## It works
+## How it works
 
-- Visit the homepage
-- Search for images based on their titles and tags
-- Download images that users have uploaded and made available publicly
+- Visit the homepage.
+- Search for images based on their titles and tags.
+- Download images that users have uploaded and made available publicly.
 
 - Register using using gmail or username and password at `/accounts/register`
-- Upload images at `/accounts/upload`
-- Make the image public or private
-- The system tags the uploaded images using AI to improve searching
+- Upload images at `/accounts/upload`.
+- Make the image public or private.
+- The system tags the uploaded images using AI to improve searching.
 
-- Log in and visit `/accounts`
-- Delete or make your images public or private
+- Log in and visit `/accounts` to delete or make your images public or private.
+
+## Live demo
+
+[https://imagerepo.pythonanywhere.com/](https://imagerepo.pythonanywhere.com/).

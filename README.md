@@ -7,6 +7,11 @@ An online repository of images where you can upload and download images.
 - Python 3
 - Pip
 
+## API Keys
+
+- [Google OAuth2](https://developers.google.com/identity/protocols/oauth2) - For gmail login.
+  [Imagga](https://imagga.com/) - For tagging.
+
 ## Installation
 
 Clone this repository and open it in your prefered editor e.g. VS code.
@@ -29,8 +34,10 @@ python manage.py migrate
 
 ```python
 SECRET_KEY = "your_app_screts_key"
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'google_auth02_key'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'google_oauth2_key'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'google_auth02_secret_key'
+API_KEY = 'imagga_api_key'
+API_SECRET = 'imagga_secret_key'
 DEBUG = True
 ALLOWED_HOSTS = ["localhost"]
 ```
@@ -50,4 +57,9 @@ ALLOWED_HOSTS = ["localhost"]
 
 ## Live demo
 
-[https://imagerepo.pythonanywhere.com/](https://imagerepo.pythonanywhere.com/).
+[https://imagerepo.pythonanywhere.com/](https://imagerepo.pythonanywhere.com/)
+
+## Demo limitation
+
+- Rate limiting by `pythonanywere.com` (free account) thus tagging is not working.
+- [Running locally](https://github.com/dodziraynard/imagerepo/blob/main/web/utils.py)

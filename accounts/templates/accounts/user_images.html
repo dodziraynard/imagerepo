@@ -1,0 +1,57 @@
+{% extends 'web/base_template.html' %}
+{% block title %}Upload Images{% endblock %}
+
+{% block body %}
+<div class="m-5">
+
+    <h1>My Images</h1>
+    <form action="" class="form" method="GET">
+        <input class="form-control" type="search" name="query" id="query" placeholder="Search through my images">
+        <button class="btn btn-secondary" type="submit">Search</button>
+    </form>
+    <hr>
+</div>
+
+<div>
+    <form action="{% url 'accounts:operate_images' %}" id="my-images-form" class="form" method="POST">
+
+
+        {% csrf_token %}
+        <div class="row" style="justify-content: center;">
+            {% if not images %}
+            <div class="alert alert-info">
+                <p>You dont have any image yet</p>
+                <a href="{% url 'accounts:upload_image' %}">Submit a photo</a>
+            </div>
+            {% endif %}
+            {% for item in images %}
+            <div class="card col-md-3 m-1 col-sm-10 col-xs-12">
+                <label for="img-{{item.id}}">
+                    <img src="{{item.file.url}}" alt="{{item.title}}" title="{{item.title}}" class="col-md-12">
+                </label>
+                <div class="m-switchery d-top">
+                    <label class="container">
+                        <input type="checkbox" name="selected_images" id="img-{{item.id}}" value="{{item.id}}">
+                        <div class="switchery"></div>
+                    </label>
+                </div>
+                {% if not item.is_public %}
+                <span class="badge badge-secondary">Private</span>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+
+        <hr>
+        <div class="form-group col-md-6 col-sm-10 mx-auto top-sticky">
+            <select class="form-control" name="operation" id="operation" required>
+                <option value="">Select options</option>
+                <option value="public">Make Selected Public</option>
+                <option value="private">Make Selected Private</option>
+                <option value="delete">Delete Selected</option>
+            </select>
+            <button class="btn btn-secondary" type="submit">Go</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

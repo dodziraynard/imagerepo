@@ -1,0 +1,29 @@
+{% extends 'web/base_template.html' %}
+{% block title %}{{image.title}}{% endblock %}
+
+{% block body %}
+<div class="image-viewer">
+    <h1>{{image.title}}</h1>
+    <a href="{{image.file.url}}">
+        <img src="{{image.file.url}}" alt="{{image.title}}" title="{{image.title}}">
+    </a>
+</div>
+<h4 class="text text-muted ml-4">Related Images</h4>
+<div class="photo-grid">
+    {% for item in images %}
+    <div class="card">
+        <a href="{% url 'web:image_details' item.id %}">
+            <img src="{{item.file.url}}" alt="{{item.title}}" title="{{item.title}}">
+        </a>
+        <div class="image-options">
+            <a href="{{item.file.url}}" download>Download</a>
+            <p class="tags">
+                {% for tag in item.tags %}
+                <a href="{% url 'web:search' %}?query={{tag}}" class="tag">{{tag}}</a>
+                {% endfor %}
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

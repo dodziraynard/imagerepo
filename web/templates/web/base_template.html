@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{request.site_name}} | {% block title %}{% endblock %}</title>
+    {% load static %}
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/png">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style-responsive.css' %}">
+</head>
+
+<body>
+    <nav>
+        <div class="brand">
+            <a href="/">
+                <div id="logo">
+                    <p>
+                        <img src="{% static 'images/favicon.png' %}" alt="logo" height="30s">
+                    </p>
+                </div>
+            </a>
+            <div class="name">
+                <p>Image Repo</p>
+                <p class="d-only"><small>Your free online image repository</small></p>
+            </div>
+        </div>
+        <form action="{% url 'web:search' %}" method="get" id="search-images">
+            <button type="submit">Search</button>
+            <input type="search" name="query" id="search" placeholder="Search Image Repo for free images ..." autofocus>
+        </form>
+        <div class="actions d-only">
+            <p><a class="btn btn-secondary" href="{% url 'accounts:upload_image' %}">Submit a photo</a></p>
+            <p>
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'accounts:my_images' %}">Hi {{request.user.username}}!</a>
+                {% else %}
+                <a href="{% url 'accounts:login' %}">Login</a>
+                {% endif %}
+            </p>
+            <p>
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'accounts:logout' %}" class="btn btn-primary">Logout</a>
+                {% else %}
+                <a href="{% url 'accounts:register' %}" class="btn btn-primary">Join free</a>
+                {% endif %}
+            </p>
+        </div>
+        <div class="hamburger m-only">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+    <main>
+        {% block body %}
+
+        {% endblock %}
+    </main>
+
+    <hr>
+    {% include 'accounts/blocks/footer.html' %}
+
+    <script defer src="{% static 'js/app.js' %}"></script>
+</body>
+
+</html>

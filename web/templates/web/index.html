@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/png">
+    <title>{{request.site_name}} | Home</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style-responsive.css' %}">
+</head>
+
+<body>
+    <nav>
+        <div class="brand">
+            <a href="/">
+                <div id="logo">
+                    <p>
+                        <img src="{% static 'images/favicon.png' %}" alt="logo" height="50">
+                    </p>
+                </div>
+            </a>
+            <div class="name">
+                <p>Image Repo</p>
+                <p><small>Your free online image repository</small></p>
+            </div>
+        </div>
+
+        <div class="actions d-only">
+            <p><a class="btn btn-secondary" href="{% url 'accounts:upload_image' %}">Submit a photo</a></p>
+            <p>
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'accounts:my_images' %}">Hi {{request.user.username}}!</a>
+                {% else %}
+                <a href="{% url 'accounts:login' %}">Login</a>
+                {% endif %}
+            </p>
+            <p>
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'accounts:logout' %}" class="btn btn-primary">Logout</a>
+                {% else %}
+                <a href="{% url 'accounts:register' %}" class="btn btn-primary">Join free</a>
+                {% endif %}
+            </p>
+        </div>
+        <div class="hamburger m-only">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+
+    <div class="hero" style="background-image: url({% static 'images/bg.jpg' %})">
+        <div class="intro-glass">
+            <h1 class="text text-center">Welcome to
+                <strong class="text-primary">Image Repo</strong>, your free online
+                image repository.
+            </h1>
+            <form action="{% url 'web:search' %}" method="get" id="search-images" style="margin: auto;">
+                <button type="submit" style="color: var(--primary-color-variant);">Search</button>
+                <input type="search" name="query" id="search" placeholder="Search free images ..." autofocus>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <h2 class="m-4 text text-muted">Newly Uploaded</h2>
+        <div class="photo-grid">
+            {% for item in images %}
+            <div class="card">
+                <a href="{% url 'web:image_details' item.id %}">
+                    <img src="{{item.file.url}}" alt="{{item.title}}" title="{{item.title}}">
+                </a>
+                <div class="image-options">
+                    <a href="{{item.file.url}}" download>Download</a>
+                    <p class="tags">
+                        {% for tag in item.tags %}
+                        <a href="{% url 'web:search' %}?query={{tag}}" class="tag">{{tag}}</a>
+                        {% endfor %}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+
+
+    <hr>
+    {% include 'accounts/blocks/footer.html' %}
+
+    <script src="{% static 'js/app.js' %}"></script>
+</body>
+
+</html>

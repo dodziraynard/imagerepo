@@ -1,0 +1,55 @@
+{% extends 'accounts/accounts_base.html' %}
+{% block title %}Upload Images{% endblock %}
+
+{% block body %}
+
+<div class="col-md-6 col-sm-10 col-xs-12 mx-auto my-4">
+    <h1 class="text text-center text-muted">Upload Image</h1>
+
+    <form class="form" id="upload-form" action="{% url 'accounts:upload_image' %}" method="POST"
+        enctype="multipart/form-data">
+        {% csrf_token %}
+        {%if request.error_message %}
+        <div class="alert alert-danger">
+            {{request.error_message}}
+        </div>
+        {% endif %}
+        <div class="form-group">
+            <input type="text" name="title" id="title" class="form-control" placeholder="Title" required>
+        </div>
+
+        <div class="form-group">
+            <label for=""></label>
+            <input type="text" name="user_tags" id="user_tags" class="form-control" placeholder="# Tags">
+        </div>
+
+        <div class="form-group" title="Automaticaly tag the image using AI to enhance searching.">
+            <div class="m-switchery">
+                <label class="container" for="auto_tag">
+                    <input type="checkbox" name="auto_tag" id="auto_tag" checked>
+                    <div class="switchery"></div>
+                    <strong class="text" for="checkbox"> Auto Tag</strong>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="file" name="files" id="files" class="form-control" multiple max="2" required>
+        </div>
+
+        <div class="form-group" title="Make this image available for everyone to download.">
+            <div class="m-switchery">
+                <label class="container" for="is_public">
+                    <input type="checkbox" name="is_public" id="is_public" checked>
+                    <div class="switchery"></div>
+                    <strong class="text" for="checkbox"> Publicly available</strong>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-secondary d-block mx-auto col-md-6">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

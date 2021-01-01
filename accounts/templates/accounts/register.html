@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/png">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <title>{{request.site_name}} | Register</title>
+</head>
+
+<body>
+
+    <div class="form-container text-center mx-auto col-md-6 col-sm-10 col-xs-12">
+
+        <a href="/">
+            <img class="m-4" src="{% static 'images/favicon.png' %}" alt="favicon" height="50"
+                title="Home - Image Repo">
+        </a>
+        <h2 class="text">Register</h2>
+        <p class="text">Welcome to Image Repo.</p>
+
+        <a class="btn btn-danger d-block col-md-7 col-sm-10 col-xs-12 mx-auto"
+            href="{% url 'social:begin' 'google-oauth2' %}?next={% url 'web:index' %}">
+            Register with Google
+        </a>
+
+        <p class="m-3">OR</p>
+        <form class="form col-md-10 mx-auto" action="{% url 'accounts:register' %}?next={{next}}" method="POST">
+            {% if error_message %}
+            <div class="alert alert-danger">
+                {{error_message}}
+            </div>
+            {% endif %}
+            {% csrf_token %}
+            <div class="form-group">
+                <label class="text  d-block text-left" for="username">Username</label>
+                <input class="form-control" type="text" name="username" id="username" required>
+            </div>
+            <div class="form-group">
+                <label class="text  d-block text-left" for="password">Password</label>
+                <input class="form-control" type="password" name="password" id="password" required>
+            </div>
+            <div class="form-group">
+                <label class="text  d-block text-left" for="password2">Confirm Password</label>
+                <input class="form-control" type="password" name="password2" id="password2" required>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-secondary d-block col-md-7 col-sm-10 col-xs-12 mx-auto"
+                    type="submit">Register</button>
+            </div>
+        </form>
+
+
+        <br>
+
+        <p>Already have an account? <a href="{% url 'accounts:login' %}">Log in</a></p>
+
+        <br>
+    </div>
+    {% include 'accounts/blocks/footer.html' %}
+</body>
+
+</html>

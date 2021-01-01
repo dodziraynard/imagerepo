@@ -1,5 +1,7 @@
 import requests
 from django.conf import settings
+from imagerepo import local_settings
+
 # from requests.auth import HTTPBasicAuth
 
 
@@ -9,7 +11,7 @@ def get_image_tags(image_url):
         image_url = 'https://imagerepo.pythonanywhere.com/assets/uploads/images/101_m3qcQH3.jpg'
     return requests.get(
         'https://api.imagga.com/v2/tags?image_url=%s' % image_url,
-        auth=(settings.api_key, settings.api_secret))
+        auth=(local_settings.api_key, local_settings.api_secret))
 
 
 if __name__ == "__main__":

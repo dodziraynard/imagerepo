@@ -27,8 +27,7 @@ SECRET_KEY = local_settings.SECRET_KEY
 DEBUG = local_settings.DEBUG
 
 ALLOWED_HOSTS = local_settings.ALLOWED_HOSTS
-api_key = local_settings.api_key
-api_secret = local_settings.api_secret
+
 
 # Application definition
 

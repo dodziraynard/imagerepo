@@ -65,20 +65,20 @@ class UploadImage(View):
                 image.save()
 
                 # Generating image tags
-                if auto_tag:
-                    response = get_image_tags(image.file.url)
-                    try:
-                        if response.status_code == 200:
-                            if response.json().get("status").get("type") == "success":
-                                tags = response.json().get("result").get("tags")
-                                string_tags = ""
-                                for tag in tags:
-                                    if float(tag.get("confidence")) > 40:
-                                        string_tags += f'{tag.get("tag").get("en")} '
-                                image.auto_tags = string_tags
-                                image.save()
-                    except Exception as e:
-                        print("Error getting tag: ", e)
+                # if auto_tag:
+                response = get_image_tags(image.file.url)
+                #     try:
+                if response.status_code == 200:
+                    if response.json().get("status").get("type") == "success":
+                        tags = response.json().get("result").get("tags")
+                        string_tags = ""
+                        for tag in tags:
+                            if float(tag.get("confidence")) > 40:
+                                string_tags += f'{tag.get("tag").get("en")} '
+                        image.auto_tags = string_tags
+                        image.save()
+                    # except Exception as e:
+                    #     print("Error getting tag: ", e)
 
             else:
                 for field, er in form.errors.items():

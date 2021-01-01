@@ -4,6 +4,7 @@ from django.conf import settings
 
 
 def get_image_tags(image_url):
+    print("URL: "+image_url)
     api_key = 'acc_cece79b1fdbe524'
     api_secret = '85636c4461a3a21d423280c7feb49061'
     if settings.DEBUG:

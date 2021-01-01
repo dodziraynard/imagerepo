@@ -10,7 +10,7 @@ An online repository of images where you can upload and download images.
 ## API Keys
 
 - [Google OAuth2](https://developers.google.com/identity/protocols/oauth2) - For gmail login.
-  [Imagga](https://imagga.com/) - For tagging.
+- [Imagga](https://imagga.com/) - For tagging.
 
 ## Installation
 
@@ -30,7 +30,7 @@ python manage.py migrate
 ## Running
 
 - Create `local_settings.py` file in `/imagerepo/imagerepo`
-- Enter the code below into the `local_settings.py`
+- Enter the code below into the `local_settings.py` and update the keys.
 
 ```python
 SECRET_KEY = "your_app_screts_key"
@@ -63,3 +63,8 @@ ALLOWED_HOSTS = ["localhost"]
 
 - Rate limiting by `pythonanywere.com` (free account) thus tagging is not working.
 - [Running locally](https://github.com/dodziraynard/imagerepo/blob/main/web/utils.py)
+
+## Possible improvements
+
+- Using task queue library e.g. django-celery and redis to tag images asynchronously.
+- Generating smaller versions of the uploaded image for use as thumbnails.

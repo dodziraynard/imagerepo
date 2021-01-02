@@ -24,6 +24,13 @@
   --shadow-color: black;
 }
 
+.theme-toggler {
+  position: fixed;
+  right: 0;
+  top: 90%;
+  z-index: 2;
+}
+
 body {
   background-color: var(--bg-color);
   color: var(--font-color);

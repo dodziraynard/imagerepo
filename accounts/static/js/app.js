@@ -20,3 +20,33 @@ document.querySelector("#my-images-form")?.addEventListener("submit", (Event) =>
 hamgurger?.addEventListener("click", () => {
     actions.classList.toggle("open")
 })
+
+const toggleSwitch = document.querySelector('#toggle-theme');
+
+document.documentElement.setAttribute('data-theme', localStorage.getItem('theme'));
+if (localStorage.getItem('theme') === "dark")
+    toggleSwitch?.setAttribute("checked", true)
+
+
+console.log(document.documentElement)
+function switchTheme(e) {
+    if (e.target.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
+    else {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
+}
+
+toggleSwitch?.addEventListener('change', switchTheme, false);
+
+function switchTheme(e) {
+    if (e.target.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark'); //add this
+    }
+    else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light'); //add this
+    }
+}

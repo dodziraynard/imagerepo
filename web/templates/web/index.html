@@ -10,9 +10,26 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/style-responsive.css' %}">
+
+    <style>
+        .theme-toggler {
+            position: fixed;
+            right: 0;
+            top: 90%;
+            z-index: 2;
+        }
+    </style>
 </head>
 
 <body>
+    <div class="theme-toggler">
+        <div class="m-switchery">
+            <label class="container" for="toggle-theme">
+                <input type="checkbox" name="toggle-theme" id="toggle-theme">
+                <div class="switchery"></div>
+            </label>
+        </div>
+    </div>
     <nav>
         <div class="brand">
             <a href="/">

@@ -2,10 +2,10 @@
 
 An online repository of images where you can upload and download images.
 
-## Environment requirements
+## Language and Libraries
 
 - Python 3
-- Pip
+- Django 3
 
 ## API Keys
 
@@ -61,7 +61,7 @@ ALLOWED_HOSTS = ["localhost"]
 
 ## Demo limitation
 
-- Rate limiting by `pythonanywere.com` (free account) thus tagging is not working.
+- Rate limiting by `pythonanywere.com` (free account) thus tagging is not working in the live demo.
 - [Running locally](https://github.com/dodziraynard/imagerepo/blob/main/web/utils.py)
 
 ## Possible improvements

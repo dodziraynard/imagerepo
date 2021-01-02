@@ -66,5 +66,5 @@ ALLOWED_HOSTS = ["localhost"]
 
 ## Possible improvements
 
-- Using task queue library e.g. django-celery and redis to tag images asynchronously.
+- Using a task queue library e.g. [django-celery](https://docs.celeryproject.org/en/stable/django/first-steps-with-django.html) and redis to tag images asynchronously.
 - Generating smaller versions of the uploaded image for use as thumbnails.

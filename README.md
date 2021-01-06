@@ -42,6 +42,14 @@ DEBUG = True
 ALLOWED_HOSTS = ["localhost"]
 ```
 
+## Testing
+
+- There are 22 tests
+
+```bash
+    python manage.py test
+```
+
 ## How it works
 
 - Visit the homepage.

@@ -1,7 +1,6 @@
 import requests
 from django.conf import settings
 from imagerepo import local_settings
-# from requests.auth import HTTPBasicAuth
 
 
 def get_image_tags(image_url):

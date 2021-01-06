@@ -70,7 +70,7 @@ python .\manage.py test
 ## Demo limitation
 
 - Rate limiting by [pythonanywere.com](www.pythonanywhere.com) (free account) so tagging is not working in the live demo.
-- [Running locally](https://github.com/dodziraynard/imagerepo/blob/main/web/utils.py)
+- [Running locally](https://github.com/dodziraynard/imagerepo/blob/main/web/utils.py) Since [Imagga](https://imagga.com/)s cannot access the image from the localhost, I used a dummy image.
 
 ## Possible improvements
 

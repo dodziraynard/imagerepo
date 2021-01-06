@@ -44,10 +44,10 @@ ALLOWED_HOSTS = ["localhost"]
 
 ## Testing
 
-- There are 22 tests
+There are 22 tests.
 
 ```bash
-    python manage.py test
+python .\manage.py test
 ```
 
 ## How it works
@@ -69,7 +69,7 @@ ALLOWED_HOSTS = ["localhost"]
 
 ## Demo limitation
 
-- Rate limiting by `pythonanywere.com` (free account) thus tagging is not working in the live demo.
+- Rate limiting by [pythonanywere.com](www.pythonanywhere.com) (free account) so tagging is not working in the live demo.
 - [Running locally](https://github.com/dodziraynard/imagerepo/blob/main/web/utils.py)
 
 ## Possible improvements
